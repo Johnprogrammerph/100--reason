@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>100 Reasons Why I Love You</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Sticky notes background */
+    .note {
+      position: absolute;
+      width: 150px;
+      min-height: 100px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      transform: rotate(-2deg);
+      opacity: 0.9;
+      z-index: 1;
+    }
+    .note h4 {
+      margin: 0 0 5px;
+      font-size: 15px;
+    }
+
+    /* Position each note */
+    .note1 { background: #fff9a8; top: 40px; left: 40px; }
+    .note2 { background: #ffd6a5; bottom: 60px; left: 80px; transform: rotate(3deg); }
+    .note3 { background: #caffbf; top: 100px; right: 60px; transform: rotate(-4deg); }
+    .note4 { background: #9bf6ff; bottom: 80px; right: 100px; transform: rotate(2deg); }
+    .note5 { background: #bdb2ff; top: 50%; left: 10px; transform: rotate(-5deg); }
+    .note6 { background: #ffadad; top: 200px; left: 200px; transform: rotate(4deg); }
+    .note7 { background: #ffd6e0; bottom: 200px; left: 250px; transform: rotate(-3deg); }
+    .note8 { background: #a0c4ff; top: 300px; right: 200px; transform: rotate(2deg); }
+    .note9 { background: #caffbf; bottom: 150px; right: 250px; transform: rotate(-2deg); }
+    .note10 { background: #fdffb6; top: 400px; left: 100px; transform: rotate(3deg); }
+
+    .container {
+      max-width: 600px;
+      width: 90%;
+      background: rgba(255,255,255,0.9);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      z-index: 5; /* above notes */
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      color: #ff5a7d;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      line-height: 1.6;
+      min-height: 80px;
+      transition: opacity 0.5s;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      background: #ff5a7d;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #e14c6c;
+    }
+
+    /* Floating music button */
+    #music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff5a7d;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    #music-btn:hover {
+      background: #e14c6c;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sticky Notes Background -->
+  <div class="note note1"><h4>Hey Love 💌</h4><p>You’re my safe place.</p></div>
+  <div class="note note2"><h4>Reminder 🌸</h4><p>Drink water, eat & smile!</p></div>
+  <div class="note note3"><h4>Always 💕</h4><p>I’m proud of you.</p></div>
+  <div class="note note4"><h4>Secret ✨</h4><p>You’re my happiness.</p></div>
+  <div class="note note5"><h4>Note 🌟</h4><p>You are enough.</p></div>
+  <div class="note note6"><h4>Note 🌿</h4><p>Take breaks, breathe.</p></div>
+  <div class="note note7"><h4>Note 💪</h4><p>Keep pushing forward.</p></div>
+  <div class="note note8"><h4>Note 🎯</h4><p>Stay focused on goals.</p></div>
+  <div class="note note9"><h4>Note 📌</h4><p>I love you endlessly.</p></div>
+  <div class="note note10"><h4>Note ❤️</h4><p>Don’t forget: you’re special.</p></div>
+
+  <div class="container">
+    <h1>100 Reasons Why I Love You Mary Jane Dayunot ❤️, I know 100 reason is not enough to 
+        love you, but here yung mga alam ko.</h1>
+    <p id="reason"></p>
+    <div class="buttons">
+      <button onclick="prevReason()">← Previous</button>
+      <button onclick="nextReason()">Next →</button>
+    </div>
+  </div>
+
+  <!-- Background music -->
+  <audio id="bg-music" loop>
+    <source src="Mabagal na Senaryo.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Play music button -->
+  <button id="music-btn">🎵 Play Music</button>
+
+  <script>
+    const reasons = [
+      "Mahal kita kasi ikaw ang safe place ko.",
+      "Naiintindihan mo ako kahit di ko sabihin lahat.",
+      "Marunong kang makinig, hindi lang sumagot.",
+      "Pinapatawa mo ako sa pinaka-bad trip na araw.",
+      "Ramdam ko ang genuine mong care.",
+      "Iba ang lambing mo.",
+      "Proud ka sa maliliit kong wins.",
+      "Hinahayaan moko hawakan kamay mo.",
+      "Nag aasar ka palagi.",
+      "Pinapahalagahan mo ang pamilya mo at lahat ng tao naka paligid sayo.",
+      "Respeto mo sa boundaries ko.",
+      "May pangarap ka at sinasama mo ako roon.",
+      "Hindi ka takot mag-sorry kapag mali.",
+      "kahit mahirap na isang bagay dinadaan mo parin sa tawa.",
+      "Consistent ka.",
+      "You make effort kahit pagod ka may time ka parin makipag usap.",
+      "Marunong kang magpasaya ng simpleng bagay.",
+      "Naalala mo ang maliliit na detalye tungkol sa ’kin.",
+      "Pinaparamdam mong sapat ako.",
+      "Masaya ka sa saya ko; ramdam ko ang support.",
+      "Nirerespeto mo pamilya ko.",
+      "Hindi mo pinu-push ang mga bagay na ayaw ko.",
+      "Pinoprotektahan mo ang relasyon.",
+      "Marunong kang magpakumbaba.",
+      "Kapag may problema, teammate kita, hindi kalaban.",
+      "Ang kulit mo in a cute way.",
+      "Kay sarap mong kausap—mula mababaw hanggang malalim.",
+      "Pareho tayong willing matuto at mag-grow.",
+      "Nakikita mo ang best version ko kahit di ko nakikita minsan.",
+      "Tinatawag mo akong “baby” sa tamang moments.",
+      "Mahilig ka sa quality time, hindi lang quantity.",
+      "Pinapahalagahan mo ang honesty kaysa sa comfort.",
+      "Magaan ang mundo pag kasama ka.",
+      "Hindi ka nagsasawa sa mga kwento ko kahit paulit-ulit.",
+      "May sense of humor na hindi nakakasakit.",
+      "Pinapadali mo ang mahirap.",
+      "Naayos mo ako sa mga moments na lutang ako.",
+      "Hindi ka nagme-make feel na “too much” ako.",
+      "Hindi ka nakakaligtaan magparamdam kahit busy.",
+      "Marunong kang magmahal ng tahimik at totoo.",
+      "Hindi ka napapagod intindihin mga explanation ko.",
+      "You choose me—araw-araw.",
+      "May galang ka sa elders at sa staff/crews—green flag.",
+      "Hindi mo tinitipid ang “please” at “thank you.”",
+      "may care ka kapag may sakit ako.",
+      "Pinapahalagahan mo ang mental health.",
+      "Masipag ka, pero may time ka pa rin sa atin.",
+      "Pareho tayo undecided sa lahat ng bagay.",
+      "Hindi ka materialistic; experience > things.",
+      "Sumasabay ka sa kabaliwan ko, baliw tayo pareho.",
+      "You smell good.",
+      "Ganda ng ngiti mo—panalo.",
+      "Ang mga mata mo, laging honest at lagi nag smile.",
+      "Cute ka kapag nagko-concentrate.",
+      "Adorable kapag nag gagalit galitan.",
+      "Hindi ka mahilig magpa-impress; ikaw lang—sapat na.",
+      "May passion ka sa ginagawa mo.",
+      "Marunong kang magpatawad.",
+      "Mahilig ka sa chismis lalo na pag dating sa friends.",
+      "Tinatrato mo akong partner at the same time tropa.",
+      "Open ka sa feedback, hindi defensive.",
+      "Hindi ka takot maging vulnerable.",
+      "Naalala mo mga bawal sakin, binag babawal mo rin haha.",
+      "May effort ka sa dates kahit simple lang.",
+      "Game ka sa long walks at deep talks.",
+      "You check in on me—hindi “good morning” lang.",
+      "Lagi kang nagbibigay ng lakas ng loob kapag kinakabahan ako.",
+      "Marunong kang humawak ng feelings.",
+      "Hindi mo kinukumpara ang love natin sa iba.",
+      "You celebrate my individuality.",
+      "You let me rest without guilt.",
+      "You push me kindly to be better.",
+      "You pray/hope with me sa mga plano natin.",
+      "You’re gentle with my fears.",
+      "You’re firm with our boundaries.",
+      "You keep our secrets safe.",
+      "You’re patient with my healing.",
+      "You love my love language, and speak yours too.",
+      "You make space for my friends.",
+      "You make effort with my family.",
+      "You understand me pag lagi nakaka sleep kapag ka usap.",
+      "You text when when i leaving home (small thing, big love).",
+      "You understand pag nakaka sleep while watching movie together.",
+      "You choose conversations over cold wars.",
+      "You don’t flirt for validation—loyal ka.",
+      "You value consent in everything.",
+      "Hindi mo ako pinaparamdam na mag-isa ako.",
+      "You remind me to drink water/sleep/eat (life saver!).",
+      "You’re proud to be seen with me.",
+      "Kaya mong gawing exciting ang mga ordinaryong araw.",
+      "You laugh at my corny jokes pati yung banat na cringe ka.",
+      "You make me feel attractive even on bad days.",
+      "You show up on time or update if late.",
+      "Ayaw mo nag beg ako.",
+      "You reassure me without me asking.",
+      "You notice when something’s off.",
+      "You make “home” feel like a person.",
+      "You love openly, not loudly.",
+      "You’re my favorite everyday.",
+      "Dahil ikaw ka—at mahal kita dahil doon."
+    ];
+
+    let index = 0;
+    const reasonText = document.getElementById("reason");
+
+    function showReason() {
+      reasonText.style.opacity = 0;
+      setTimeout(() => {
+        reasonText.textContent = `${index + 1}. ${reasons[index]}`;
+        reasonText.style.opacity = 1;
+      }, 300);
+    }
+
+    function nextReason() {
+      index = (index + 1) % reasons.length;
+      showReason();
+    }
+
+    function prevReason() {
+      index = (index - 1 + reasons.length) % reasons.length;
+      showReason();
+    }
+
+    setInterval(nextReason, 5000);
+    showReason();
+
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-btn");
+
+    musicBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "⏸ Pause Music";
+      } else {
+        music.pause();
+        musicBtn.textContent = "🎵 Play Music";
+      }
+    });
+  </script>
+</body>
+</html>
